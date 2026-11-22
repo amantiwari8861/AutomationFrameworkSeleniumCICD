@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    tools {
+   tools {
         maven 'MVN3'
         jdk 'JDK25'
     }
@@ -13,25 +13,30 @@ pipeline {
             }
         }
 
-        stage('Build & Test') {
+        stage('Run Tests') {
             steps {
-                sh 'mvn clean test'
+                withCredentials([
+                    file(credentialsId: 'automation-config',
+                         variable: 'CONFIG_FILE')
+                ]) {
+                    sh '''
+                        cp "$CONFIG_FILE" src/main/resources/config.properties
+                        mvn clean test
+                    '''
+                }
             }
         }
     }
-     post {
+
+    post {
         always {
-
-            junit allowEmptyResults: true,
-                  testResults: 'target/surefire-reports/*.xml'
+            sh 'rm -f src/main/resources/config.properties'
         }
-
         success {
-            echo 'All Selenium tests passed.'
+            echo 'Build successful!'
         }
-
         failure {
-            echo 'Some Selenium tests failed.'
+            echo 'Build failed!'
         }
     }
 }
