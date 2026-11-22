@@ -1,6 +1,5 @@
 package com.training.driver;
 
-
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,9 +49,12 @@ public final class DriverFactory {
 
                 options.addArguments(
                         "--window-size=1920,1080",
-                        "--disable-notifications"
-                );
-
+                        "--disable-notifications");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920,1080");
+                options.addArguments("--disable-notifications");
                 webDriver = new ChromeDriver(options);
             }
 
@@ -65,8 +67,7 @@ public final class DriverFactory {
 
                 options.addArguments(
                         "--window-size=1920,1080",
-                        "--disable-notifications"
-                );
+                        "--disable-notifications");
 
                 webDriver = new EdgeDriver(options);
             }
@@ -94,7 +95,7 @@ public final class DriverFactory {
 
     public static WebDriver getDriver() {
         WebDriver webDriver = DRIVER.get();
-        	
+
         if (webDriver == null) {
             throw new IllegalStateException(
                     "WebDriver has not been initialized");
