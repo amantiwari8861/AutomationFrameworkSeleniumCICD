@@ -1,0 +1,34 @@
+# ---------------------------------------------------------------------------
+# Template for src/main/resources/config.properties
+#
+#   Copy this file to src/main/resources/config.properties and fill in the
+#   values. That real file is listed in .gitignore and must stay local.
+#
+#   Any value here can also be supplied at runtime, which takes precedence:
+#     -DbaseUrl=https://example.com
+#     -Dbrowser=edge
+#     -Dheadless=true
+#   or via an environment variable with the exact key name (e.g. baseUrl).
+# ---------------------------------------------------------------------------
+
+# Target application URL used by BaseTest tests.
+baseUrl=https://www.saucedemo.com/
+
+# Browser to launch: chrome | edge
+browser=chrome
+
+# Run without a visible browser window: true | false
+headless=false
+
+# Explicit wait timeout used by page objects (seconds).
+explicitWaitSeconds=10
+
+# Maximum page load time (seconds).
+pageLoadTimeoutSeconds=30
+
+# ---------------------------------------------------------------------------
+# Credentials for the optional, standalone DeleteChats flow.
+# Leave blank unless you intentionally run that flow. Do not commit them.
+# ---------------------------------------------------------------------------
+sc_username=
+password=

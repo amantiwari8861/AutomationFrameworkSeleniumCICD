@@ -1,0 +1,60 @@
+# ---------------------------------------------------------------------------
+# Build output
+# ---------------------------------------------------------------------------
+target/
+build/
+out/
+bin/
+
+# ---------------------------------------------------------------------------
+# Test artifacts (reports, screenshots, logs, TestNG output)
+# ---------------------------------------------------------------------------
+test-output/
+screenshots/
+reports/
+logs/
+*.log
+*.log.gz
+hs_err_pid*
+replay_pid*
+
+# ---------------------------------------------------------------------------
+# Local / secret configuration
+#
+# NEVER commit real credentials. The tracked template is
+# config.properties.example; copy it to src/main/resources/config.properties
+# and keep the real file local (or supply values via -Dkey=value / env vars).
+# ---------------------------------------------------------------------------
+src/main/resources/config.properties
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# ---------------------------------------------------------------------------
+# IDE / editor metadata
+# ---------------------------------------------------------------------------
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.launch
+
+# ---------------------------------------------------------------------------
+# OS noise
+# ---------------------------------------------------------------------------
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# Misc
+# ---------------------------------------------------------------------------
+*.class
+dependency-reduced-pom.xml
